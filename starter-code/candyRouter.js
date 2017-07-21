@@ -1,17 +1,59 @@
-var express = require('express');
-var bodyParser = require('body-parser');
-router = express.Router();
+console.log('hello candy router');
 
-var candies;
+const express = require('express');
+const bodyParser = require('body-parser');
+const router = express.Router();
 
-//What would need to go into candies
-//in order to pass our first test?
 
+// create candies array
+const candies = [
+                {	"id": 1,
+                	"name": "Chewing Gum",
+                	"color": "red",
+            	},
+            	{	"id": 2,
+                	"name": "Pez",
+                	"color": "green",
+            	},
+            	{	"id": 3,
+                	"name": "Marshmallow",
+                	"color": "pink",
+            	},
+            	{	"id": 4,
+                	"name": "Candy Stick",
+                	"color": "blue",
+            	},
+               ];
+
+// restful endpoint setup for candies api
 router.get('/', function(req,res) {
-	// What would go here? 
+	//INDEX
+	res.send(candies);
 	// Hint: we want all candies in JSON format
 });
+
+router.get('/:id', function(req, res) {
+	// SHOW me the array items
+  	res.send(candies[req.params.id - 1]);
+});
+
+router.post('/:id', function(req, res) {
+	// CREATE new item and push to the body, then get back
+	// This DOES add a 5th array item
+	candies.push(req.body);
+	res.send(req.body);
+});
+
+router.put('/:id', function(req, res) {
+  // UPDATE
+});
+
+router.delete('/:id', function(req, res) {
+  // DELETE
+});
+
 
 // Fill out the rest of the routes here
 
 module.exports = router;
+

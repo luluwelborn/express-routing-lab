@@ -1,17 +1,23 @@
-//Did you use npm install to
-//add all these packages
-//to our project?
-var express = require('express');
-var app = express();
-var bodyParser = require('body-parser');
+console.log('hello backend file');
+//use npm install to get packages
+
+
+const express = require('express');
+const app = express();
+const bodyParser = require('body-parser');
+const port = process.env.PORT || 3000;
+
 
 // How do we 'require' the candyRouter file?
-var candyRouter;
+const candyRouter = require('./candyRouter.js');
 
+
+
+// parse the eventual list of candies
 app.use(bodyParser.json());
 
-//How do we redirect the /candies path
-//through our candyRouter?
-//Hint: you need app.use
+// redirect the /candies path
+app.use('/candies', candyRouter);
 
-app.listen(3000);
+app.listen(port);
+
