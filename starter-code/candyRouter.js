@@ -45,13 +45,16 @@ router.post('/:id', function(req, res) {
 });
 
 router.put('/:id', function(req, res) {
-  // UPDATE
+    // update array item
+    candies[req.params.id - 1]=req.body;
+    res.send(req.body);
+    console.log("mallow is white!");
 });
 
 router.delete('/:id', function(req, res) {
-  // DELETE
+    candies.splice(req.params.id-1,1);
+    res.send({"message":"deleted"});
 });
-
 
 // Fill out the rest of the routes here
 
