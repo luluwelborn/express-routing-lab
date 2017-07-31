@@ -37,7 +37,7 @@ router.get('/:id', function(req, res) {
   	res.send(candies[req.params.id - 1]);
 });
 
-router.post('/:id', function(req, res) {
+router.post('/', function(req, res) {
 	// CREATE new item and push to the body, then get back
 	// This DOES add a 5th array item
 	candies.push(req.body);
@@ -45,7 +45,7 @@ router.post('/:id', function(req, res) {
 });
 
 router.put('/:id', function(req, res) {
-    // update array item
+    // update array items
     candies[req.params.id - 1]=req.body;
     res.send(req.body);
     console.log("mallow is white!");

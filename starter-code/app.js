@@ -12,12 +12,13 @@ const port = process.env.PORT || 3000;
 const candyRouter = require('./candyRouter.js');
 
 
-
 // parse the eventual list of candies
 app.use(bodyParser.json());
 
+
 // redirect the /candies path
 app.use('/candies', candyRouter);
+
 
 app.listen(port);
 
